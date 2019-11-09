@@ -1,25 +1,53 @@
 {
   "name": "teahouse",
-  "version": "1.0.0",
-  "description": "A platform for artworks showcasing",
-  "main": "index.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "npm run test"
+    "start": "NODE_ENV=development nodemon --exec babel-node index.js",
+    "lint": "./node_modules/.bin/eslint .",
+    "test": "NODE_ENV=test nyc mocha --require @babel/register tests/* --timeout 10000 --exit ",
+    "precommit": "npm run lint && npm run test",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/YvesIraguha/TeaHouse.git"
+  "nyc": {
+    "check-coverage": true,
+    "lines": 10,
+    "statements": 10,
+    "functions": 10,
+    "branches": 10
   },
-  "keywords": [
-    "NodejS"
-  ],
-  "author": "Yves Iraguha",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/YvesIraguha/TeaHouse/issues"
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit"
+    }
   },
-  "homepage": "https://github.com/YvesIraguha/TeaHouse#readme",
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1"
+  },
   "devDependencies": {
-    "eslint": "^6.6.0"
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
+    "@babel/node": "^7.7.0",
+    "@babel/register": "^7.7.0",
+    "@babel/runtime": "^7.7.2",
+    "babel-preset-airbnb": "^4.1.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "coveralls": "^3.0.7",
+    "debug": "~2.6.9",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.0.9",
+    "mocha": "^6.2.2",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nodemon": "^1.19.4",
+    "nyc": "^14.1.1"
   }
 }
