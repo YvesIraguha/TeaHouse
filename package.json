@@ -1,0 +1,25 @@
+{
+  "name": "teahouse",
+  "version": "1.0.0",
+  "description": "A platform for artworks showcasing",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YvesIraguha/TeaHouse.git"
+  },
+  "keywords": [
+    "NodejS"
+  ],
+  "author": "Yves Iraguha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YvesIraguha/TeaHouse/issues"
+  },
+  "homepage": "https://github.com/YvesIraguha/TeaHouse#readme",
+  "devDependencies": {
+    "eslint": "^6.6.0"
+  }
+}
