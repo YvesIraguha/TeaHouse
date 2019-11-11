@@ -2,12 +2,12 @@ language: node_js
 node_js:
   - "stable"
 addons:
-  postgresql: "9.6"
+  postgresql: "9.4"
 services:
   - postgresql
 cache:
   directories:
     - "node_modules"
 before_install:
-  - npm i -g npm@6.4.1
+  - npm i -g npm@6.9.0
 script: npm test
