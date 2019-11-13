@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 
-
 const dotenv = require("dotenv");
 
 dotenv.config();
@@ -23,6 +22,16 @@ module.exports = {
           email: process.env.EMAIL,
           password: process.env.USER_PASSWORD,
           role: "Admin"
+        },
+        {
+          id: "5c66acae-6e32-43e4-8944-3e7f1f487e61",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          firstName: process.env.FIRST_NAME,
+          lastName: process.env.LAST_NAME,
+          email: "yraguha@gmail.com",
+          password: process.env.USER_PASSWORD,
+          role: "User"
         }
       ],
       {}

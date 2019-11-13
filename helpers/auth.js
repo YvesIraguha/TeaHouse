@@ -1,6 +1,8 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import Models from "../models";
 
+const { User } = Models;
 const secretKey = process.env.SECRET_KEY;
 
 const createJwtPayload = ({ email, firstName, lastName, id }) => ({
@@ -12,7 +14,7 @@ const createJwtPayload = ({ email, firstName, lastName, id }) => ({
 
 export const createJwtToken = async user => {
   try {
-    const payload = createJwtPayload(user)
+    const payload = createJwtPayload(user);
     const token = await jwt.sign(payload, secretKey, { algorithm: "HS256" });
     return token;
   } catch (error) {
@@ -44,5 +46,14 @@ export const comparePasswords = async (password, hashedPassword) => {
     return matchingPassword;
   } catch (error) {
     throw new Error("Passwords comparison failed");
+  }
+};
+
+export const checkUserType = async id => {
+  try {
+    const user = await User.findOne({ where: { id } });
+    return user.role;
+  } catch (error) {
+    throw new Error("Unable to retrieve a user");
   }
 };
