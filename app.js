@@ -2,7 +2,7 @@ import createError from "http-errors";
 import express from "express";
 import logger from "morgan";
 
-import indexRouter from "./routes/index";
+import piecesRouter from "./routes/individualPieces";
 import usersRouter from "./routes/auth";
 
 const app = express();
@@ -10,7 +10,7 @@ const app = express();
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use("/api/v1/", indexRouter);
+app.use("/api/v1/individual-pieces", piecesRouter);
 app.use("/api/v1/auth", usersRouter);
 
 // catch 404 and forward to error handler
