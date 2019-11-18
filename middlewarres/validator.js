@@ -23,6 +23,9 @@ export const validateLogin = (req, res, next) => {
 
 export const validateIndividualPiece = (req, res, next) => {
   const schema = Joi.object().keys({
+    type: Joi.string()
+      .valid("Short story", "Poem")
+      .required(),
     title: Joi.string()
       .min(14)
       .required(),
@@ -31,9 +34,6 @@ export const validateIndividualPiece = (req, res, next) => {
       .required(),
     body: Joi.string()
       .min(100)
-      .required(),
-    type: Joi.string()
-      .valid("Short story", "Poem")
       .required()
   });
   const { body } = req;
@@ -68,6 +68,50 @@ export const validateParamsId = (req, res, next) => {
   const { id } = req.params;
   const { error } = Joi.validate({ id }, schema);
 
+  if (error) {
+    return res.status(400).send({ message: error.message });
+  }
+  next();
+};
+
+export const validateCollection = (req, res, next) => {
+  const schema = Joi.object().keys({
+    type: Joi.string()
+      .valid("Book series", "images")
+      .required(),
+    title: Joi.string()
+      .min(5)
+      .required(),
+    author: Joi.string()
+      .min(4)
+      .required(),
+    files: Joi.object({
+      file: Joi.array().required(),
+      previewImage: Joi.array().required()
+    }).required()
+  });
+  const { body } = req;
+  const { files } = req;
+  const { error } = Joi.validate({ ...body, files }, schema);
+  if (error) {
+    return res.status(400).send({ message: error.message });
+  }
+  next();
+};
+
+export const validateCollectionUpdate = (req, res, next) => {
+  const schema = Joi.object().keys({
+    title: Joi.string().min(10),
+    author: Joi.string().min(4),
+    files: Joi.object({
+      file: Joi.array(),
+      previewImage: Joi.array()
+    }),
+    type: Joi.string().valid("Book series", "images")
+  });
+  const { body } = req;
+  const { files } = req;
+  const { error } = Joi.validate({ ...body, files }, schema);
   if (error) {
     return res.status(400).send({ message: error.message });
   }
