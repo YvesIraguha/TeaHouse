@@ -117,3 +117,33 @@ export const validateCollectionUpdate = (req, res, next) => {
   }
   next();
 };
+
+export const validatePages = (req, res, next) => {
+  const schema = Joi.object().keys({
+    page: Joi.number()
+      .integer()
+      .positive()
+      .min(1)
+      .required()
+  });
+  const { page } = req.query;
+  const { error } = Joi.validate({ page }, schema);
+  if (error) {
+    return res.status(400).send({ message: error.message });
+  }
+  next();
+};
+
+export const validatePieceType = (req, res, next) => {
+  const schema = Joi.object().keys({
+    type: Joi.string()
+      .valid("Short story", "Poem")
+      .required()
+  });
+  const { type } = req.query;
+  const { error } = Joi.validate({ type }, schema);
+  if (error) {
+    return res.status(400).send({ message: error.message });
+  }
+  next();
+};
