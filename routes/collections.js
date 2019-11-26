@@ -5,6 +5,8 @@ import asyncHandler from "../middlewarres/handleAsync";
 import { checkAdmin } from "../middlewarres/checkAuth";
 import {
   validateParamsId,
+  validatePages,
+  validateCollectionType,
   validateCollection,
   validateCollectionUpdate
 } from "../middlewarres/validator";
@@ -35,6 +37,7 @@ router
     validateCollectionUpdate,
     checkAdmin,
     asyncHandler(Collection.updateCollection)
-  );
+  )
+  .get("/", validatePages, validateCollectionType, asyncHandler(Collection.getAll));
 
 export default router;

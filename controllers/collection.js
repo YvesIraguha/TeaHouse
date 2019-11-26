@@ -41,7 +41,7 @@ class CollectionController {
         collection
       });
     } else {
-      res.status(404).send({ message: "Collection does not exist" });
+      res.status(404).send({ message: "Collection not found" });
     }
   }
 
@@ -78,6 +78,20 @@ class CollectionController {
       });
     } else {
       res.status(404).send({ message: "Collection does not exist" });
+    }
+  }
+
+  static async getAll(req, res) {
+    const { page, type } = req.query;
+    const collections = await Collection.findAll({
+      where: { type },
+      offset: (page - 1) * 10,
+      limit: 10
+    });
+    if (collections.length) {
+      res.status(200).send({ message: "Data retrieved successfully", collections });
+    } else {
+      res.status(404).send({ message: "Data not found" });
     }
   }
 }

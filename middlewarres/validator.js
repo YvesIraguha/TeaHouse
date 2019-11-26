@@ -147,3 +147,17 @@ export const validatePieceType = (req, res, next) => {
   }
   next();
 };
+
+export const validateCollectionType = (req, res, next) => {
+  const schema = Joi.object().keys({
+    type: Joi.string()
+      .valid("Book series", "images")
+      .required()
+  });
+  const { type } = req.query;
+  const { error } = Joi.validate({ type }, schema);
+  if (error) {
+    return res.status(400).send({ message: error.message });
+  }
+  next();
+};
