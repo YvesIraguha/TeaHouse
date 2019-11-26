@@ -5,6 +5,8 @@ import { checkAdmin } from "../middlewarres/checkAuth";
 import {
   validateIndividualPiece,
   validatePieceUpdate,
+  validatePages,
+  validatePieceType,
   validateParamsId
 } from "../middlewarres/validator";
 
@@ -34,6 +36,12 @@ router
     validateParamsId,
     checkAdmin,
     asyncHandler(IndividualPieceController.deleteOnePiece)
+  )
+  .get(
+    "/",
+    validatePages,
+    validatePieceType,
+    asyncHandler(IndividualPieceController.getAll)
   );
 
 export default router;

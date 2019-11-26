@@ -60,6 +60,21 @@ class IndividualPieceController {
       res.status(404).send({ message: "Resource does not exist" });
     }
   }
+
+  static async getAll(req, res) {
+    const { page, type } = req.query;
+    const individualPieces = await Piece.findAll({
+      where: { type },
+      offset: (page - 1) * 6,
+      limit: 6
+    });
+    if (individualPieces.length) {
+      return res
+        .status(200)
+        .send({ message: "Data retrieved successfully", individualPieces });
+    }
+    res.status(404).send({ message: "Data not found" });
+  }
 }
 
 export default IndividualPieceController;
