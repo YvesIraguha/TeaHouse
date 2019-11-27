@@ -35,7 +35,45 @@ describe("Get /api/v1/collections/collectionId", () => {
       .end((error, res) => {
         if (error) done(error);
         expect(res.status).to.equal(404);
-        expect(res.body.message).to.equal("Collection does not exist");
+        expect(res.body.message).to.equal("Collection not found");
+        done();
+      });
+  });
+
+  it("should retrieve 10 collections per page", done => {
+    chai
+      .request(app)
+      .get(`/api/v1/collections?page=1&type=images`)
+      .end((error, res) => {
+        if (error) done(error);
+        expect(res.status).to.equal(200);
+        expect(res.body.collections.length).to.equal(8);
+        done();
+      });
+  });
+
+  it("should return not found data", done => {
+    chai
+      .request(app)
+      .get(`/api/v1/collections?page=4&type=images`)
+      .end((error, res) => {
+        if (error) done(error);
+        expect(res.status).to.equal(404);
+        expect(res.body.message).to.equal("Data not found");
+        done();
+      });
+  });
+
+  it("should return use correct number", done => {
+    chai
+      .request(app)
+      .get(`/api/v1/collections?page=4546736356345363536353&type=images`)
+      .end((error, res) => {
+        if (error) done(error);
+        expect(res.status).to.equal(400);
+        expect(res.body.message).to.equal(
+          'child "page" fails because ["page" must be a safe number]'
+        );
         done();
       });
   });
