@@ -22,6 +22,7 @@ module.exports = {
       role: {
         type: Sequelize.STRING
       },
+      resetToken: Sequelize.STRING,
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

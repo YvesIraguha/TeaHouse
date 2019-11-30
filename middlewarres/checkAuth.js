@@ -6,8 +6,8 @@ export const checkAdmin = async (req, res, next) => {
     if (authorization) {
       const token = req.headers.authorization.split(" ")[1];
       const user = await decodeToken(token);
-      const type = await checkUserType(user.id);
-      if (type === "Admin") {
+      const type = await checkUserType(user.email);
+      if (type.role === "Admin") {
         req.user = user;
         next();
       } else {
@@ -17,6 +17,23 @@ export const checkAdmin = async (req, res, next) => {
       }
     } else {
       throw new Error("Provide a valid token to carry out this action");
+    }
+  } catch (error) {
+    res.status(401).send({ message: error.message, status: 401 });
+  }
+};
+
+export const checkToken = async (req, res, next) => {
+  try {
+    const { token } = req.params;
+    const decodedToken = await decodeToken(token);
+    const user = await checkUserType(decodedToken.email);
+
+    if (token === user.resetToken) {
+      req.user = user;
+      next();
+    } else {
+      res.status(403).send({ message: "Access denied", status: 403 });
     }
   } catch (error) {
     res.status(401).send({ message: error.message, status: 401 });
