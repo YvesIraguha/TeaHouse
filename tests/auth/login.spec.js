@@ -31,7 +31,7 @@ describe("/login", () => {
       .end((err, res) => {
         if (err) done(err);
         expect(res.status).to.equal(400);
-        expect(res.body.message).to.equal("Invalid credentials");
+        expect(res.body.error).to.equal("Invalid credentials");
         done();
       });
   });
@@ -44,7 +44,7 @@ describe("/login", () => {
       .end((err, res) => {
         if (err) done(err);
         expect(res.status).to.equal(404);
-        expect(res.body.message).to.equal("Invalid credentials");
+        expect(res.body.error).to.equal("Invalid credentials");
         done();
       });
   });
@@ -57,7 +57,7 @@ describe("/login", () => {
       .end((err, res) => {
         if (err) done(err);
         expect(res.status).to.equal(400);
-        expect(res.body).to.haveOwnProperty("message");
+        expect(res.body).to.haveOwnProperty("error");
         done();
       });
   });
@@ -70,7 +70,7 @@ describe("/login", () => {
       .end((err, res) => {
         if (err) done(err);
         expect(res.status).to.equal(400);
-        expect(res.body).to.haveOwnProperty("message");
+        expect(res.body).to.haveOwnProperty("error");
         done();
       });
   });

@@ -9,7 +9,7 @@ export const validateEmail = (req, res, next) => {
   const { email } = req.body;
   const { error } = Joi.validate({ email }, schema);
   if (error) {
-    return res.status(400).send({ message: error.message });
+    return res.status(400).send({ error: error.message });
   }
   next();
 };
@@ -23,7 +23,7 @@ export const validatePassword = (req, res, next) => {
   const { password } = req.body;
   const { error } = Joi.validate({ password }, schema);
   if (error) {
-    return res.status(400).send({ message: error.message });
+    return res.status(400).send({ error: error.message });
   }
   next();
 };

@@ -13,13 +13,13 @@ export const checkAdmin = async (req, res, next) => {
       } else {
         return res
           .status(403)
-          .send({ message: "You have to be an admin to perform this action" });
+          .send({ error: "You have to be an admin to perform this action" });
       }
     } else {
       throw new Error("Provide a valid token to carry out this action");
     }
   } catch (error) {
-    res.status(401).send({ message: error.message, status: 401 });
+    res.status(401).send({ error: error.message, status: 401 });
   }
 };
 
@@ -33,9 +33,9 @@ export const checkToken = async (req, res, next) => {
       req.user = user;
       next();
     } else {
-      res.status(403).send({ message: "Access denied", status: 403 });
+      res.status(403).send({ error: "Access denied", status: 403 });
     }
   } catch (error) {
-    res.status(401).send({ message: error.message, status: 401 });
+    res.status(401).send({ error: "Unable to updated password", status: 401 });
   }
 };

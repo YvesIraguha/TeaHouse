@@ -23,7 +23,7 @@ describe("/api/v1/individual-pieces", () => {
       });
   });
 
-  it("Should fail with no/wrong token", done => {
+  it("Should fail with invalid token", done => {
     chai
       .request(app)
       .post("/api/v1/individual-pieces")
@@ -32,7 +32,22 @@ describe("/api/v1/individual-pieces", () => {
       .end((err, res) => {
         if (err) done(err);
         expect(res.status).to.equal(401);
-        expect(res.body.message).to.equal("Invalid token provided");
+        expect(res.body.error).to.equal("Invalid token provided");
+        done();
+      });
+  });
+
+  it("Should fail with no token", done => {
+    chai
+      .request(app)
+      .post("/api/v1/individual-pieces")
+      .send(individualPiece)
+      .end((err, res) => {
+        if (err) done(err);
+        expect(res.status).to.equal(401);
+        expect(res.body.error).to.equal(
+          "Provide a valid token to carry out this action"
+        );
         done();
       });
   });
@@ -46,7 +61,7 @@ describe("/api/v1/individual-pieces", () => {
       .end((err, res) => {
         if (err) done(err);
         expect(res.status).to.equal(403);
-        expect(res.body.message).to.equal(
+        expect(res.body.error).to.equal(
           "You have to be an admin to perform this action"
         );
         done();
@@ -62,7 +77,7 @@ describe("/api/v1/individual-pieces", () => {
       .end((err, res) => {
         if (err) done(err);
         expect(res.status).to.equal(400);
-        expect(res.body.message).to.equal(
+        expect(res.body.error).to.equal(
           'child "body" fails because ["body" is not allowed to be empty]'
         );
         done();
@@ -78,7 +93,7 @@ describe("/api/v1/individual-pieces", () => {
       .end((err, res) => {
         if (err) done(err);
         expect(res.status).to.equal(400);
-        expect(res.body.message).to.equal(
+        expect(res.body.error).to.equal(
           'child "title" fails because ["title" is not allowed to be empty]'
         );
         done();
@@ -94,7 +109,7 @@ describe("/api/v1/individual-pieces", () => {
       .end((err, res) => {
         if (err) done(err);
         expect(res.status).to.equal(400);
-        expect(res.body.message).to.equal(
+        expect(res.body.error).to.equal(
           'child "author" fails because ["author" is not allowed to be empty]'
         );
         done();

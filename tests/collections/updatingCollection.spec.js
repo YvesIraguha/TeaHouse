@@ -38,7 +38,7 @@ describe("Put /api/v1/collections/pieceId", () => {
       .end((error, res) => {
         if (error) done(error);
         expect(res.status).to.equal(404);
-        expect(res.body.message).to.equal("Collection does not exist");
+        expect(res.body.error).to.equal("Collection does not exist");
         done();
       });
   });
@@ -52,7 +52,7 @@ describe("Put /api/v1/collections/pieceId", () => {
       .end((error, res) => {
         if (error) done(error);
         expect(res.status).to.equal(401);
-        expect(res.body.message).to.equal("Invalid token provided");
+        expect(res.body.error).to.equal("Invalid token provided");
         done();
       });
   });
@@ -66,7 +66,7 @@ describe("Put /api/v1/collections/pieceId", () => {
       .end((error, res) => {
         if (error) done(error);
         expect(res.status).to.equal(403);
-        expect(res.body.message).to.equal(
+        expect(res.body.error).to.equal(
           "You have to be an admin to perform this action"
         );
         done();
@@ -82,7 +82,7 @@ describe("Put /api/v1/collections/pieceId", () => {
       .end((error, res) => {
         if (error) done(error);
         expect(res.status).to.equal(400);
-        expect(res.body.message).to.equal(
+        expect(res.body.error).to.equal(
           'child "title" fails because ["title" length must be at least 10 characters long]'
         );
         done();

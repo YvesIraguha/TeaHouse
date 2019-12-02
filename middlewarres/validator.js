@@ -19,7 +19,7 @@ export const validateIndividualPiece = (req, res, next) => {
   const { error } = Joi.validate(body, schema);
 
   if (error) {
-    return res.status(400).send({ message: error.message });
+    return res.status(400).send({ error: error.message });
   }
   next();
 };
@@ -35,7 +35,7 @@ export const validatePieceUpdate = (req, res, next) => {
   const { error } = Joi.validate(body, schema);
 
   if (error) {
-    return res.status(400).send({ message: error.message });
+    return res.status(400).send({ error: error.message });
   }
   next();
 };
@@ -48,7 +48,7 @@ export const validateParamsId = (req, res, next) => {
   const { error } = Joi.validate({ id }, schema);
 
   if (error) {
-    return res.status(400).send({ message: error.message });
+    return res.status(400).send({ error: error.message });
   }
   next();
 };
@@ -73,7 +73,7 @@ export const validateCollection = (req, res, next) => {
   const { files } = req;
   const { error } = Joi.validate({ ...body, files }, schema);
   if (error) {
-    return res.status(400).send({ message: error.message });
+    return res.status(400).send({ error: error.message });
   }
   next();
 };
@@ -92,7 +92,7 @@ export const validateCollectionUpdate = (req, res, next) => {
   const { files } = req;
   const { error } = Joi.validate({ ...body, files }, schema);
   if (error) {
-    return res.status(400).send({ message: error.message });
+    return res.status(400).send({ error: error.message });
   }
   next();
 };
@@ -108,7 +108,7 @@ export const validatePages = (req, res, next) => {
   const { page } = req.query;
   const { error } = Joi.validate({ page }, schema);
   if (error) {
-    return res.status(400).send({ message: error.message });
+    return res.status(400).send({ error: error.message });
   }
   next();
 };
@@ -122,7 +122,7 @@ export const validatePieceType = (req, res, next) => {
   const { type } = req.query;
   const { error } = Joi.validate({ type }, schema);
   if (error) {
-    return res.status(400).send({ message: error.message });
+    return res.status(400).send({ error: error.message });
   }
   next();
 };
@@ -136,7 +136,7 @@ export const validateCollectionType = (req, res, next) => {
   const { type } = req.query;
   const { error } = Joi.validate({ type }, schema);
   if (error) {
-    return res.status(400).send({ message: error.message });
+    return res.status(400).send({ error: error.message });
   }
   next();
 };

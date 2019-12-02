@@ -28,7 +28,7 @@ describe("/api/v1/individual-pieces", () => {
       .end((error, res) => {
         if (error) done(error);
         expect(res.status).to.equal(404);
-        expect(res.body.message).to.equal("Resource does not exist");
+        expect(res.body.error).to.equal("Resource does not exist");
         done();
       });
   });
@@ -52,19 +52,33 @@ describe("/api/v1/individual-pieces", () => {
       .end((error, res) => {
         if (error) done(error);
         expect(res.status).to.equal(404);
-        expect(res.body.message).to.equal("Data not found");
+        expect(res.body.error).to.equal("Data not found");
         done();
       });
   });
 
-  it("should return paginated output", done => {
+  it("should return wrong type error", done => {
+    chai
+      .request(app)
+      .get(`/api/v1/individual-pieces?page=3&type=songs`)
+      .end((error, res) => {
+        if (error) done(error);
+        expect(res.status).to.equal(400);
+        expect(res.body.error).to.equal(
+          'child "type" fails because ["type" must be one of [Short story, Poem]]'
+        );
+        done();
+      });
+  });
+
+  it("should return paginated non-safe integer error", done => {
     chai
       .request(app)
       .get(`/api/v1/individual-pieces?page=9223372036854775807`)
       .end((error, res) => {
         if (error) done(error);
         expect(res.status).to.equal(400);
-        expect(res.body.message).to.equal(
+        expect(res.body.error).to.equal(
           'child "page" fails because ["page" must be a safe number]'
         );
         done();
