@@ -49,10 +49,10 @@ export const comparePasswords = async (password, hashedPassword) => {
   }
 };
 
-export const checkUserType = async id => {
+export const checkUserType = async email => {
   try {
-    const user = await User.findOne({ where: { id } });
-    return user.role;
+    const user = await User.findOne({ where: { email } });
+    return user;
   } catch (error) {
     throw new Error("Unable to retrieve a user");
   }

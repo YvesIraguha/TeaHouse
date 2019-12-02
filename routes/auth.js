@@ -1,10 +1,15 @@
 import express from "express";
 import LoginController from "../controllers/auth";
 import handleAsync from "../middlewarres/handleAsync";
-import { validateLogin } from "../middlewarres/validator";
+import { validateEmail, validatePassword } from "../middlewarres/users";
 
 const router = express.Router();
 
-router.post("/login", validateLogin, handleAsync(LoginController.login));
+router.post(
+  "/login",
+  validatePassword,
+  validateEmail,
+  handleAsync(LoginController.login)
+);
 
 export default router;
