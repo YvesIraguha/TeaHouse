@@ -35,7 +35,21 @@ describe("Get /api/v1/collections/collectionId", () => {
       .end((error, res) => {
         if (error) done(error);
         expect(res.status).to.equal(404);
-        expect(res.body.message).to.equal("Collection not found");
+        expect(res.body.error).to.equal("Collection not found");
+        done();
+      });
+  });
+
+  it("should return wrong type of params", done => {
+    chai
+      .request(app)
+      .get(`/api/v1/collections/hello`)
+      .end((error, res) => {
+        if (error) done(error);
+        expect(res.status).to.equal(400);
+        expect(res.body.error).to.equal(
+          'child "id" fails because ["id" must be a valid GUID]'
+        );
         done();
       });
   });
@@ -59,7 +73,21 @@ describe("Get /api/v1/collections/collectionId", () => {
       .end((error, res) => {
         if (error) done(error);
         expect(res.status).to.equal(404);
-        expect(res.body.message).to.equal("Data not found");
+        expect(res.body.error).to.equal("Data not found");
+        done();
+      });
+  });
+
+  it("should return wrong type error", done => {
+    chai
+      .request(app)
+      .get(`/api/v1/collections?page=4&type=videos`)
+      .end((error, res) => {
+        if (error) done(error);
+        expect(res.status).to.equal(400);
+        expect(res.body.error).to.equal(
+          'child "type" fails because ["type" must be one of [Book series, images]]'
+        );
         done();
       });
   });
@@ -71,7 +99,7 @@ describe("Get /api/v1/collections/collectionId", () => {
       .end((error, res) => {
         if (error) done(error);
         expect(res.status).to.equal(400);
-        expect(res.body.message).to.equal(
+        expect(res.body.error).to.equal(
           'child "page" fails because ["page" must be a safe number]'
         );
         done();

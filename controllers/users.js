@@ -32,11 +32,11 @@ class ResetPassword {
         });
       } else {
         res.status(500).send({
-          message: "Unable to send the email with sendgrid"
+          error: "Unable to send the email with sendgrid"
         });
       }
     } else {
-      res.status(404).send({ message: "Invalid credentials " });
+      res.status(404).send({ error: "Invalid credentials" });
     }
   }
 
@@ -57,7 +57,7 @@ class ResetPassword {
         user: { email, id }
       });
     } else {
-      res.status(404).send({ message: "Unable to updated password" });
+      res.status(404).send({ error: "Unable to updated password" });
     }
   }
 }

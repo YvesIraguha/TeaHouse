@@ -41,7 +41,7 @@ class CollectionController {
         collection
       });
     } else {
-      res.status(404).send({ message: "Collection not found" });
+      res.status(404).send({ error: "Collection not found" });
     }
   }
 
@@ -57,10 +57,10 @@ class CollectionController {
       if (deletedCollection) {
         res.status(200).send({ message: "Collection deleted successfully" });
       } else {
-        res.status(404).send({ message: "Collection does not exist", result });
+        res.status(404).send({ error: "Collection does not exist", result });
       }
     } else {
-      res.status(404).send({ message: "Collection does not exist" });
+      res.status(404).send({ error: "Collection does not exist" });
     }
   }
 
@@ -77,7 +77,7 @@ class CollectionController {
         collection: updatedCollection[1][0]
       });
     } else {
-      res.status(404).send({ message: "Collection does not exist" });
+      res.status(404).send({ error: "Collection does not exist" });
     }
   }
 
@@ -91,7 +91,7 @@ class CollectionController {
     if (collections.length) {
       res.status(200).send({ message: "Data retrieved successfully", collections });
     } else {
-      res.status(404).send({ message: "Data not found" });
+      res.status(404).send({ error: "Data not found" });
     }
   }
 }

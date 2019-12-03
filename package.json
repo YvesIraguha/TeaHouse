@@ -17,7 +17,7 @@
     "lines": 90,
     "statements": 90,
     "functions": 90,
-    "branches": 75,
+    "branches": 80,
     "exclude": [
       "**/*.spec.js"
     ]
@@ -34,7 +34,6 @@
     "datauri": "^2.0.0",
     "dotenv": "^8.2.0",
     "express": "~4.16.1",
-    "http-errors": "~1.6.3",
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
     "morgan": "~1.9.1",

@@ -28,7 +28,7 @@ class IndividualPieceController {
         individualPiece: piece
       });
     } else {
-      res.status(404).send({ message: "Resource does not exist" });
+      res.status(404).send({ error: "Resource does not exist" });
     }
   }
 
@@ -38,7 +38,7 @@ class IndividualPieceController {
     if (deletedPiece) {
       res.status(200).send({ message: "Resource deleted successfully" });
     } else {
-      res.status(404).send({ message: "Resource does not exist" });
+      res.status(404).send({ error: "Resource does not exist" });
     }
   }
 
@@ -57,7 +57,7 @@ class IndividualPieceController {
         individualPiece: updatedPiece[1][0]
       });
     } else {
-      res.status(404).send({ message: "Resource does not exist" });
+      res.status(404).send({ error: "Resource does not exist" });
     }
   }
 
@@ -73,7 +73,7 @@ class IndividualPieceController {
         .status(200)
         .send({ message: "Data retrieved successfully", individualPieces });
     }
-    res.status(404).send({ message: "Data not found" });
+    res.status(404).send({ error: "Data not found" });
   }
 }
 

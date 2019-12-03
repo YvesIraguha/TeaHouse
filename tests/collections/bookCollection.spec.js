@@ -60,7 +60,7 @@ describe("Post /api/v1/collections", () => {
       .end((error, res) => {
         if (error) done(error);
         expect(res.status).to.equal(401);
-        expect(res.body.message).to.equal("Invalid token provided");
+        expect(res.body.error).to.equal("Invalid token provided");
         done();
       });
   });
@@ -78,7 +78,7 @@ describe("Post /api/v1/collections", () => {
       .end((err, res) => {
         if (err) done(err);
         expect(res.status).to.equal(403);
-        expect(res.body.message).to.equal(
+        expect(res.body.error).to.equal(
           "You have to be an admin to perform this action"
         );
         done();
@@ -94,7 +94,7 @@ describe("Post /api/v1/collections", () => {
       .end((err, res) => {
         if (err) done(err);
         expect(res.status).to.equal(400);
-        expect(res.body.message).to.equal(
+        expect(res.body.error).to.equal(
           'child "files" fails because ["files" is required]'
         );
         done();
@@ -110,7 +110,7 @@ describe("Post /api/v1/collections", () => {
       .end((err, res) => {
         if (err) done(err);
         expect(res.status).to.equal(400);
-        expect(res.body.message).to.equal(
+        expect(res.body.error).to.equal(
           'child "type" fails because ["type" is not allowed to be empty]'
         );
         done();

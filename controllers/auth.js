@@ -1,7 +1,6 @@
 import Models from "../models";
 import { comparePasswords, createJwtToken } from "../helpers/auth";
 
-
 const { User } = Models;
 
 class LoginController {
@@ -18,10 +17,10 @@ class LoginController {
         const token = await createJwtToken(user);
         res.status(200).send({ message: "Logged in successfully", token });
       } else {
-        res.status(400).send({ message: "Invalid credentials" });
+        res.status(400).send({ error: "Invalid credentials" });
       }
     } else {
-      res.status(404).send({ message: "Invalid credentials" });
+      res.status(404).send({ error: "Invalid credentials" });
     }
   }
 }
