@@ -1,0 +1,17 @@
+{
+  "version": "2",
+  "checks": {
+    "method-lines": {
+      "config": {
+        "threshold": 90
+      }
+    },
+    "argument-count": {
+      "enabled": false
+    },
+    "similar-code": {
+      "enabled": false
+    }
+  },
+  "exclude_patterns": ["seeders/"]
+}
