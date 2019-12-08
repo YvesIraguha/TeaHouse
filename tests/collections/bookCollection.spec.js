@@ -2,7 +2,7 @@ import chai, { expect } from "chai";
 import chaiHttp from "chai-http";
 import sinon from "sinon";
 import cloudinary from "cloudinary";
-import app from "../../app";
+import app from "../../src/app";
 import {
   collection2,
   token,

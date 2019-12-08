@@ -1,4 +1,4 @@
-import Models from "../models";
+import Models from "../../models";
 import { resetPasswordToken } from "../helpers/users";
 import { hashPassword } from "../helpers/auth";
 import { sendResetPasswordLink } from "../helpers/sendEmail";

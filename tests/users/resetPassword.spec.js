@@ -2,9 +2,9 @@ import chai, { expect } from "chai";
 import chaiHttp from "chai-http";
 import sinon from "sinon";
 import sgMail from "@sendgrid/mail";
-import app from "../../app";
+import app from "../../src/app";
 import emailResponse from "../sendGridMock";
-import { resetPasswordToken } from "../../helpers/users";
+import { resetPasswordToken } from "../../src/helpers/users";
 
 chai.use(chaiHttp);
 

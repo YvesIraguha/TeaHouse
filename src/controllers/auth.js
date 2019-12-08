@@ -1,4 +1,4 @@
-import Models from "../models";
+import Models from "../../models";
 import { comparePasswords, createJwtToken } from "../helpers/auth";
 
 const { User } = Models;
@@ -10,7 +10,6 @@ class LoginController {
     } = req;
 
     const user = await User.findOne({ where: { email } });
-
     if (user) {
       const comparedPassword = await comparePasswords(password, user.password);
       if (comparedPassword) {
