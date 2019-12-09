@@ -13,5 +13,5 @@
       "enabled": false
     }
   },
-  "exclude_patterns": ["seeders/"]
+  "exclude_patterns": ["seeders/", "dist/"]
 }
