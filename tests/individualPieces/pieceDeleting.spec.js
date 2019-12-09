@@ -1,6 +1,6 @@
 import chai, { expect } from "chai";
 import chaiHttp from "chai-http";
-import app from "../../app";
+import app from "../../src/app";
 import { userToken, token, deleteId, wrongId } from "../mockData";
 
 chai.use(chaiHttp);

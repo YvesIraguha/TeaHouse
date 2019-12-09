@@ -1,4 +1,4 @@
-import Models from "../models";
+import Models from "../../models";
 import { generateSlug } from "../helpers/individualPiece";
 
 const { Piece } = Models;

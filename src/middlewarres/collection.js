@@ -1,4 +1,4 @@
-import { Collection } from "../models";
+import { Collection } from "../../models";
 
 export const checkCollectionPresence = async (req, res, next) => {
   const { id } = req.params;
