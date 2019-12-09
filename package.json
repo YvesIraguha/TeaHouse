@@ -21,7 +21,8 @@
     "functions": 90,
     "branches": 80,
     "exclude": [
-      "**/*.spec.js"
+      "**/*.spec.js",
+      "./dist/"
     ]
   },
   "dependencies": {
