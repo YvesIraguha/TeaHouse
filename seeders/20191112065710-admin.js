@@ -19,7 +19,7 @@ module.exports = {
           updatedAt: new Date(),
           firstName: process.env.FIRST_NAME,
           lastName: process.env.LAST_NAME,
-          email: "yvesiraguha52@gmail.com",
+          email: "yves.iraguha52@gmail.com",
           password: process.env.USER_PASSWORD,
           role: "Admin"
         },
