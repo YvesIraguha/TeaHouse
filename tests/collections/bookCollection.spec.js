@@ -24,7 +24,7 @@ describe("Post /api/v1/collections", () => {
       .set({ Authorization: `Bearer ${token}` })
       .field("title", collection2.title)
       .field("type", collection2.type)
-      .field("author", collection2.type)
+      .field("author", collection2.author)
       .attach("file", `${__dirname}/../mockData.js`)
       .attach("previewImage", `${__dirname}/../mockData.js`)
       .end((error, res) => {
@@ -43,6 +43,7 @@ describe("Post /api/v1/collections", () => {
         expect(res.body.createdCollection.collectionUrl).to.equal(
           uploadResponse2.url
         );
+        uploadStub.restore();
         done();
       });
   });

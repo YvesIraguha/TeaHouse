@@ -13,13 +13,9 @@ const createJwtPayload = ({ email, firstName, lastName, id }) => ({
 });
 
 export const createJwtToken = async user => {
-  try {
-    const payload = createJwtPayload(user);
-    const token = await jwt.sign(payload, secretKey, { algorithm: "HS256" });
-    return token;
-  } catch (error) {
-    throw new Error("Something went wrong while creating a token");
-  }
+  const payload = createJwtPayload(user);
+  const token = await jwt.sign(payload, secretKey, { algorithm: "HS256" });
+  return token;
 };
 
 export const decodeToken = async token => {
@@ -32,12 +28,8 @@ export const decodeToken = async token => {
 };
 
 export const hashPassword = async password => {
-  try {
-    const hashedPassword = await bcrypt.hash(password, 10);
-    return hashedPassword;
-  } catch (error) {
-    throw new Error("Unable to create a hashed password");
-  }
+  const hashedPassword = await bcrypt.hash(password, 10);
+  return hashedPassword;
 };
 
 export const comparePasswords = async (password, hashedPassword) => {

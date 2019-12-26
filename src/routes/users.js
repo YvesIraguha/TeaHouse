@@ -5,6 +5,7 @@ import ResetPassword from "../controllers/users";
 import checkAllowedMethod from "../middlewarres/allowedMethod";
 import { validateEmail, validatePassword } from "../middlewarres/users";
 import { checkToken } from "../middlewarres/checkAuth";
+import { validateSubmission } from "../middlewarres/validator";
 import Submission from "../controllers/submission";
 
 const userRouter = express.Router();
@@ -19,7 +20,11 @@ userRouter
   .all(checkAllowedMethod);
 userRouter
   .route("/submission")
-  .post(upload.fields([{ name: "file" }]), asyncHandler(Submission.submitWork))
+  .post(
+    upload.fields([{ name: "file" }]),
+    validateSubmission,
+    asyncHandler(Submission.submitWork)
+  )
   .all(checkAllowedMethod);
 
 export default userRouter;

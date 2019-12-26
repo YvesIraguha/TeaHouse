@@ -35,6 +35,7 @@ describe("/api/v1/users/reset-password", () => {
             expect(response.body.message).to.equal(
               "Password updated successfully, please login"
             );
+            sendEmailStub.restore();
             done();
           });
       });

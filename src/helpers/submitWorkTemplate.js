@@ -1,4 +1,4 @@
-const submitWorkTemplate = fullName => `<!DOCTYPE html>
+const submitWorkTemplate = (fullName, type) => `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -61,7 +61,8 @@ const submitWorkTemplate = fullName => `<!DOCTYPE html>
     <div class="row2">
       <p id="firstName">Hello Yves Iraguha</p>
       <p>
-        I hope that you are doing fine, this is ${fullName}. As it is indicated from submission page of the TEAHOUSE platform, I would to send my work so that it can be evaluated and be published no the platform. The attached file is the actual work. 
+        I hope that you are doing fine, this is ${fullName}. As it is indicated from submission page of the TEAHOUSE platform, I would like to submit my work so that it can be evaluated and be published on the platform. The attached file is the actual work. 
+        The type of this work is ${type}.
       </p>
     </div>
   </body>

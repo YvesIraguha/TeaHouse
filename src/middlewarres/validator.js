@@ -7,12 +7,15 @@ export const validateIndividualPiece = (req, res, next) => {
       .required(),
     title: Joi.string()
       .min(14)
+      .trim()
       .required(),
     author: Joi.string()
       .min(4)
+      .trim()
       .required(),
     body: Joi.string()
       .min(100)
+      .trim()
       .required()
   });
   const { body } = req;
@@ -26,9 +29,15 @@ export const validateIndividualPiece = (req, res, next) => {
 
 export const validatePieceUpdate = (req, res, next) => {
   const schema = Joi.object().keys({
-    title: Joi.string().min(10),
-    author: Joi.string().min(4),
-    body: Joi.string().min(100),
+    title: Joi.string()
+      .min(10)
+      .trim(),
+    author: Joi.string()
+      .min(4)
+      .trim(),
+    body: Joi.string()
+      .min(100)
+      .trim(),
     type: Joi.string().valid("Short story", "Poem")
   });
   const { body } = req;
@@ -60,9 +69,11 @@ export const validateCollection = (req, res, next) => {
       .required(),
     title: Joi.string()
       .min(5)
+      .trim()
       .required(),
     author: Joi.string()
       .min(4)
+      .trim()
       .required(),
     files: Joi.object({
       file: Joi.array().required(),
@@ -135,6 +146,31 @@ export const validateCollectionType = (req, res, next) => {
   });
   const { type } = req.query;
   const { error } = Joi.validate({ type }, schema);
+  if (error) {
+    return res.status(400).send({ error: error.message });
+  }
+  next();
+};
+
+export const validateSubmission = (req, res, next) => {
+  const schema = Joi.object().keys({
+    type: Joi.string()
+      .valid("Book series", "images", "Short story", "Poem")
+      .required(),
+    fullName: Joi.string()
+      .min(4)
+      .trim()
+      .required(),
+    email: Joi.string()
+      .email()
+      .required(),
+    files: Joi.object({
+      file: Joi.array().required()
+    }).required()
+  });
+  const { body } = req;
+  const { files } = req;
+  const { error } = Joi.validate({ ...body, files }, schema);
   if (error) {
     return res.status(400).send({ error: error.message });
   }
