@@ -1,14 +1,7 @@
 import sgMail from "@sendgrid/mail";
 import submitWorkTemplate from "../helpers/submitWorkTemplate";
 
-// const baseApi = process.env.BASE_API;
 
-// const emailContent = (fullName, email) => ({
-//   to: email,
-//   from: "iraguhaivos@gmail.com",
-//   subject: "Reset Password Request",
-//   html: submitWorkTemplate(fullName)
-// });
 
 class Submission {
   static async submitWork(req, res) {
@@ -16,7 +9,6 @@ class Submission {
       sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
       const { fullName, email } = req.body;
-      console.log("request was received", fullName, email);
       const { file } = req.files;
       const sendGridResponse = await sgMail.send({
         to: "yvesiraguha52@gmail.com",
