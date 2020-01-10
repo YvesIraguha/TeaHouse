@@ -40,7 +40,7 @@ describe("/api/v1/individual-pieces", () => {
       .end((error, res) => {
         if (error) done(error);
         expect(res.status).to.equal(200);
-        expect(res.body.individualPieces.length).to.equal(6);
+        expect(res.body.data.individualPieces.length).to.equal(6);
         done();
       });
   });

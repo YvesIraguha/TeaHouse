@@ -63,15 +63,22 @@ class IndividualPieceController {
 
   static async getAll(req, res) {
     const { page, type } = req.query;
-    const individualPieces = await Piece.findAll({
+    const individualPieces = await Piece.findAndCountAll({
       where: { type },
       offset: (page - 1) * 6,
-      limit: 6
+
+      limit: 6,
+      order: [["createdAt", "DESC"]]
     });
-    if (individualPieces.length) {
-      return res
-        .status(200)
-        .send({ message: "Data retrieved successfully", individualPieces });
+    if (individualPieces.rows.length) {
+      const totalPages = Math.ceil(individualPieces.count / 6);
+      return res.status(200).send({
+        message: "Data retrieved successfully",
+        data: {
+          totalPages,
+          individualPieces: individualPieces.rows
+        }
+      });
     }
     res.status(404).send({ error: "Data not found" });
   }
