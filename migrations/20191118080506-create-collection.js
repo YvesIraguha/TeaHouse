@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       type: {
-        type: Sequelize.ENUM("Book series", "images")
+        type: Sequelize.ENUM("Book series", "Images")
       },
 
       author: {

@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../src/helpers/individualPiece.js"],"names":["generateSlug","title","toLowerCase"],"mappings":";;;;;;;;;AAAA;;AAEO,IAAMA,YAAY,GAAG,SAAfA,YAAe,CAAAC,KAAK;AAAA,SAAI,sBAAKA,KAAL,EAAYC,WAAZ,EAAJ;AAAA,CAA1B","sourcesContent":["import slug from \"slug\";\n\nexport const generateSlug = title => slug(title).toLowerCase();\n"],"file":"individualPiece.js"}

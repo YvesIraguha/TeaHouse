@@ -20,10 +20,10 @@ describe("/api/v1/users/submission", () => {
       .field("fullName", collection2.author)
       .attach("file", `${__dirname}/../mockData.js`)
       .end((error, response) => {
+        sendEmailStub.restore();
         if (error) done(error);
         expect(response.status).to.equal(200);
-        expect(response.body.message).to.equal("Book submitted successfully");
-        sendEmailStub.restore();
+        expect(response.body.message).to.equal("Images submitted successfully");
         done();
       });
   });

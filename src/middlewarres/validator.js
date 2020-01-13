@@ -65,7 +65,7 @@ export const validateParamsId = (req, res, next) => {
 export const validateCollection = (req, res, next) => {
   const schema = Joi.object().keys({
     type: Joi.string()
-      .valid("Book series", "images")
+      .valid("Book series", "Images")
       .required(),
     title: Joi.string()
       .min(5)
@@ -97,7 +97,7 @@ export const validateCollectionUpdate = (req, res, next) => {
       file: Joi.array(),
       previewImage: Joi.array()
     }),
-    type: Joi.string().valid("Book series", "images")
+    type: Joi.string().valid("Book series", "Images")
   });
   const { body } = req;
   const { files } = req;
@@ -141,7 +141,7 @@ export const validatePieceType = (req, res, next) => {
 export const validateCollectionType = (req, res, next) => {
   const schema = Joi.object().keys({
     type: Joi.string()
-      .valid("Book series", "images")
+      .valid("Book series", "Images")
       .required()
   });
   const { type } = req.query;
@@ -155,7 +155,7 @@ export const validateCollectionType = (req, res, next) => {
 export const validateSubmission = (req, res, next) => {
   const schema = Joi.object().keys({
     type: Joi.string()
-      .valid("Book series", "images", "Short story", "Poem")
+      .valid("Book series", "Images", "Short story", "Poem")
       .required(),
     fullName: Joi.string()
       .min(4)

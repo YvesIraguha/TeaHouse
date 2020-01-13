@@ -21,7 +21,7 @@ class Submission {
         ]
       });
       res.status(200).send({
-        message: "Book submitted successfully",
+        message: `${type} submitted successfully`,
         data: { ...sendGridResponse[0] }
       });
     } catch (error) {

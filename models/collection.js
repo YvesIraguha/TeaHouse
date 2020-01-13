@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING
       },
       title: DataTypes.STRING,
-      type: DataTypes.ENUM("Book series", "images"),
+      type: DataTypes.ENUM("Book series", "Images"),
       author: DataTypes.STRING,
       userId: DataTypes.UUID
     },
