@@ -17,7 +17,6 @@ class CollectionController {
       await uploadFile(file[0]),
       await uploadFile(previewImage[0])
     ]);
-
     const cloudinaryOutput = extractCloudinaryOutput(result);
     const createdCollection = await Collection.create({
       type,
@@ -83,17 +82,24 @@ class CollectionController {
 
   static async getAll(req, res) {
     const { page, type } = req.query;
-    const collections = await Collection.findAll({
+    const collections = await Collection.findAndCountAll({
       where: { type },
-      offset: (page - 1) * 10,
-      limit: 10
+      offset: (page - 1) * 6,
+
+      limit: 6,
+      order: [["createdAt", "DESC"]]
     });
-    if (collections.length) {
-      res.status(200).send({ message: "Data retrieved successfully", collections });
-    } else {
-      res.status(404).send({ error: "Data not found" });
+    if (collections.rows.length) {
+      const totalPages = Math.ceil(collections.count / 6);
+      return res.status(200).send({
+        message: "Data retrieved successfully",
+        data: {
+          totalPages,
+          collections: collections.rows
+        }
+      });
     }
+    res.status(404).send({ error: "Data not found" });
   }
 }
-
 export default CollectionController;
