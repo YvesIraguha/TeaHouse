@@ -23,7 +23,7 @@ describe("/api/v1/users/submission", () => {
         sendEmailStub.restore();
         if (error) done(error);
         expect(response.status).to.equal(200);
-        expect(response.body.message).to.equal("Images submitted successfully");
+        expect(response.body.message).to.equal("Issues submitted successfully");
         done();
       });
   });
