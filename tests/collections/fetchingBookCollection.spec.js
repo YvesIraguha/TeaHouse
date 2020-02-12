@@ -57,11 +57,11 @@ describe("Get /api/v1/collections/collectionId", () => {
   it("should retrieve 10 collections per page", done => {
     chai
       .request(app)
-      .get(`/api/v1/collections?page=1&type=Images`)
+      .get(`/api/v1/collections?page=1&type=Issues`)
       .end((error, res) => {
         if (error) done(error);
         expect(res.status).to.equal(200);
-        expect(res.body.collections.length).to.equal(8);
+        expect(res.body.data.collections.length).to.equal(6);
         done();
       });
   });
@@ -69,7 +69,7 @@ describe("Get /api/v1/collections/collectionId", () => {
   it("should return not found data", done => {
     chai
       .request(app)
-      .get(`/api/v1/collections?page=4&type=Images`)
+      .get(`/api/v1/collections?page=4&type=Issues`)
       .end((error, res) => {
         if (error) done(error);
         expect(res.status).to.equal(404);
@@ -86,7 +86,7 @@ describe("Get /api/v1/collections/collectionId", () => {
         if (error) done(error);
         expect(res.status).to.equal(400);
         expect(res.body.error).to.equal(
-          'child "type" fails because ["type" must be one of [Book series, Images]]'
+          'child "type" fails because ["type" must be one of [Book series, Issues]]'
         );
         done();
       });
@@ -95,7 +95,7 @@ describe("Get /api/v1/collections/collectionId", () => {
   it("should return use correct number", done => {
     chai
       .request(app)
-      .get(`/api/v1/collections?page=4546736356345363536353&type=Images`)
+      .get(`/api/v1/collections?page=4546736356345363536353&type=Issues`)
       .end((error, res) => {
         if (error) done(error);
         expect(res.status).to.equal(400);

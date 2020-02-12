@@ -11,9 +11,9 @@ export const individualPiece = {
 };
 
 export const collection2 = {
-  title: "Hello world Images collection",
+  title: "Hello world Issues collection",
   author: "Yves Iraguha",
-  type: "Images"
+  type: "Issues"
 };
 
 export const collection = {
