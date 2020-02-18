@@ -70,7 +70,7 @@ class IndividualPieceController {
       limit: 6,
       order: [["createdAt", "DESC"]]
     });
-    if (individualPieces.rows.length) {
+    if (individualPieces.rows) {
       const totalPages = Math.ceil(individualPieces.count / 6);
       return res.status(200).send({
         message: "Data retrieved successfully",
