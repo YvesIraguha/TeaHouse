@@ -8,8 +8,9 @@ import resetPasswordRouter from "./routes/users";
 
 const app = express();
 const corsOptions = {
-  origin: /http:\/\/localhost:3000\/*/
+  origin: /https:\/\/yvesiraguha.github.io\/*/
 };
+
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

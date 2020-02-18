@@ -45,18 +45,6 @@ describe("/api/v1/individual-pieces", () => {
       });
   });
 
-  it("should return data not found", done => {
-    chai
-      .request(app)
-      .get(`/api/v1/individual-pieces?page=3&type=Short story`)
-      .end((error, res) => {
-        if (error) done(error);
-        expect(res.status).to.equal(404);
-        expect(res.body.error).to.equal("Data not found");
-        done();
-      });
-  });
-
   it("should return wrong type error", done => {
     chai
       .request(app)
