@@ -66,18 +66,6 @@ describe("Get /api/v1/collections/collectionId", () => {
       });
   });
 
-  it("should return not found data", done => {
-    chai
-      .request(app)
-      .get(`/api/v1/collections?page=4&type=Issues`)
-      .end((error, res) => {
-        if (error) done(error);
-        expect(res.status).to.equal(404);
-        expect(res.body.error).to.equal("Data not found");
-        done();
-      });
-  });
-
   it("should return wrong type error", done => {
     chai
       .request(app)

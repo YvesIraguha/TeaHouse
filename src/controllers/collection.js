@@ -89,7 +89,7 @@ class CollectionController {
       limit: 6,
       order: [["createdAt", "DESC"]]
     });
-    if (collections.rows.length) {
+    if (collections.rows) {
       const totalPages = Math.ceil(collections.count / 6);
       return res.status(200).send({
         message: "Data retrieved successfully",
