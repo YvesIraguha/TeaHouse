@@ -15,7 +15,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       type: {
-        type: Sequelize.ENUM("Short story", "Poem")
+        type: Sequelize.ENUM(
+          "Short story",
+          "Poem",
+          "Lit news",
+          "Gossip",
+          "Interview"
+        )
       },
       body: {
         type: Sequelize.TEXT

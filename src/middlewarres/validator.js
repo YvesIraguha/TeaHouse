@@ -3,20 +3,11 @@ import Joi from "joi";
 export const validateIndividualPiece = (req, res, next) => {
   const schema = Joi.object().keys({
     type: Joi.string()
-      .valid("Short story", "Poem")
+      .valid("Short story", "Poem", "Lit news", "Gossip", "Interview")
       .required(),
-    title: Joi.string()
-      .min(14)
-      .trim()
-      .required(),
-    author: Joi.string()
-      .min(4)
-      .trim()
-      .required(),
-    body: Joi.string()
-      .min(100)
-      .trim()
-      .required()
+    title: Joi.string().min(14).trim().required(),
+    author: Joi.string().min(4).trim().required(),
+    body: Joi.string().min(100).trim().required()
   });
   const { body } = req;
   const { error } = Joi.validate(body, schema);
@@ -29,16 +20,16 @@ export const validateIndividualPiece = (req, res, next) => {
 
 export const validatePieceUpdate = (req, res, next) => {
   const schema = Joi.object().keys({
-    title: Joi.string()
-      .min(10)
-      .trim(),
-    author: Joi.string()
-      .min(4)
-      .trim(),
-    body: Joi.string()
-      .min(100)
-      .trim(),
-    type: Joi.string().valid("Short story", "Poem")
+    title: Joi.string().min(10).trim(),
+    author: Joi.string().min(4).trim(),
+    body: Joi.string().min(100).trim(),
+    type: Joi.string().valid(
+      "Short story",
+      "Poem",
+      "Lit news",
+      "Gossip",
+      "Interview"
+    )
   });
   const { body } = req;
   const { error } = Joi.validate(body, schema);
@@ -64,17 +55,9 @@ export const validateParamsId = (req, res, next) => {
 
 export const validateCollection = (req, res, next) => {
   const schema = Joi.object().keys({
-    type: Joi.string()
-      .valid("Book series", "Issues")
-      .required(),
-    title: Joi.string()
-      .min(5)
-      .trim()
-      .required(),
-    author: Joi.string()
-      .min(4)
-      .trim()
-      .required(),
+    type: Joi.string().valid("Book series", "Issues").required(),
+    title: Joi.string().min(5).trim().required(),
+    author: Joi.string().min(4).trim().required(),
     files: Joi.object({
       file: Joi.array().required(),
       previewImage: Joi.array().required()
@@ -110,11 +93,7 @@ export const validateCollectionUpdate = (req, res, next) => {
 
 export const validatePages = (req, res, next) => {
   const schema = Joi.object().keys({
-    page: Joi.number()
-      .integer()
-      .positive()
-      .min(1)
-      .required()
+    page: Joi.number().integer().positive().min(1).required()
   });
   const { page } = req.query;
   const { error } = Joi.validate({ page }, schema);
@@ -127,7 +106,7 @@ export const validatePages = (req, res, next) => {
 export const validatePieceType = (req, res, next) => {
   const schema = Joi.object().keys({
     type: Joi.string()
-      .valid("Short story", "Poem")
+      .valid("Short story", "Poem", "Lit news", "Gossip", "Interview")
       .required()
   });
   const { type } = req.query;
@@ -140,9 +119,7 @@ export const validatePieceType = (req, res, next) => {
 
 export const validateCollectionType = (req, res, next) => {
   const schema = Joi.object().keys({
-    type: Joi.string()
-      .valid("Book series", "Issues")
-      .required()
+    type: Joi.string().valid("Book series", "Issues").required()
   });
   const { type } = req.query;
   const { error } = Joi.validate({ type }, schema);
@@ -157,13 +134,8 @@ export const validateSubmission = (req, res, next) => {
     type: Joi.string()
       .valid("Book series", "Issues", "Short story", "Poem")
       .required(),
-    fullName: Joi.string()
-      .min(4)
-      .trim()
-      .required(),
-    email: Joi.string()
-      .email()
-      .required(),
+    fullName: Joi.string().min(4).trim().required(),
+    email: Joi.string().email().required(),
     files: Joi.object({
       file: Joi.array().required()
     }).required()

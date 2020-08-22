@@ -13,14 +13,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING
       },
       title: DataTypes.STRING,
-      type: DataTypes.ENUM("Short story", "Poem"),
+      type: DataTypes.ENUM("Short story", "Poem", "Lit news", "Gossip", "Interview"),
       body: DataTypes.TEXT,
       author: DataTypes.STRING,
       userId: DataTypes.UUID
     },
     {}
   );
-  Piece.associate = models => {
+  Piece.associate = (models) => {
     Piece.belongsTo(models.User, { foreignKey: "userId", onDelete: "CASCADE" });
   };
   return Piece;
