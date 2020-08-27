@@ -7,9 +7,16 @@ import collectionsRouter from "./routes/collections";
 import resetPasswordRouter from "./routes/users";
 
 const app = express();
+const whitelist = ["http://localhost:3000", "http://teahousemagazine.org"];
+
 const corsOptions = {
-  // origin: /https:\/\/yvesiraguha.github.io\/*/
-  origin: /http:\/\/localhost:3000\/*/
+  origin: (origin, callback) => {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  }
 };
 
 app.use(logger("dev"));
