@@ -7,7 +7,11 @@ import collectionsRouter from "./routes/collections";
 import resetPasswordRouter from "./routes/users";
 
 const app = express();
-const whitelist = ["http://localhost:3000", "http://teahousemagazine.org"];
+const whitelist = [
+  "http://localhost:3000",
+  "http://teahousemagazine.org",
+  "https://teahousemagazine.org"
+];
 
 const corsOptions = {
   origin: (origin, callback) => {
