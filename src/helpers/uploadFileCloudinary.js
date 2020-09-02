@@ -10,10 +10,10 @@ cloudinary.v2.config({
   api_secret: process.env.CLOUDINARY_SECRET_KEY
 });
 
-const processFile = file =>
+const processFile = (file) =>
   dataUri.format(path.extname(file.originalname).toString(), file.buffer).content;
 
-export const uploadFile = async file => {
+export const uploadFile = async (file) => {
   try {
     const processedFile = processFile(file);
     const result = await cloudinary.v2.uploader.upload(processedFile);
@@ -23,7 +23,7 @@ export const uploadFile = async file => {
   }
 };
 
-export const deleteFile = async publicId => {
+export const deleteFile = async (publicId) => {
   try {
     const result = await cloudinary.v2.uploader.destroy(publicId);
     return result;
@@ -32,11 +32,11 @@ export const deleteFile = async publicId => {
   }
 };
 
-export const extractCloudinaryOutput = result => {
+export const extractCloudinaryOutput = (result) => {
   let previewPublicId, collectionPublicId, previewUrl, collectionUrl;
 
   // eslint-disable-next-line array-callback-return
-  result.map(output => {
+  result.map((output) => {
     if (output.format === "pdf") {
       collectionPublicId = output.public_id;
       collectionUrl = output.url;
