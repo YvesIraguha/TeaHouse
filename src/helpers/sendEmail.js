@@ -5,7 +5,7 @@ const baseApi = process.env.BASE_API;
 
 const emailContent = (firstName, email, resetToken) => ({
   to: email,
-  from: "iraguhaivos@gmail.com",
+  from: email,
   subject: "Reset Password Request",
   html: emailTemplate(firstName, `${baseApi + resetToken}`)
 });
