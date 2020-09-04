@@ -14,7 +14,7 @@ module.exports = {
           updatedAt: new Date(),
           title: "Lorem ipsum dolor sit amet",
           slug: "lorem-ipsum-dolor-sit-amet",
-          type: "Short story",
+          type: "Interview",
           body:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           author: "Yves Iraguha",
@@ -49,7 +49,7 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
           title: "consectetur adipiscing elit",
-          type: "Short story",
+          type: "Gossip",
           slug: "consectetur-adipiscing-elit",
           body:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
@@ -62,7 +62,7 @@ module.exports = {
           updatedAt: new Date(),
           title: "ut labore et dolore magna",
           slug: "ut-labore-et-dolore-magna",
-          type: "Short story",
+          type: "Lit news",
           body:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           author: "Yves Iraguha",
@@ -74,7 +74,7 @@ module.exports = {
           updatedAt: new Date(),
           title: "Ut enim ad minim veniam",
           slug: "ut-enim-ad-minim-veniam",
-          type: "Poem",
+          type: "Essay",
           body:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           author: "Yves Iraguha",
@@ -146,7 +146,7 @@ module.exports = {
           updatedAt: new Date(),
           title: "dolor sit amet, consectetur",
           slug: "dolor-sit-amet-consectetur",
-          type: "Poem",
+          type: "Gossip",
           body:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           author: "Yves Iraguha",
