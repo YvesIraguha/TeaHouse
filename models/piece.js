@@ -13,7 +13,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING
       },
       title: DataTypes.STRING,
-      type: DataTypes.ENUM("Short story", "Poem", "Lit news", "Gossip", "Interview"),
+      type: DataTypes.ENUM(
+        "Short story",
+        "Poem",
+        "Lit news",
+        "Gossip",
+        "Interview",
+        "Essay"
+      ),
       body: DataTypes.TEXT,
       author: DataTypes.STRING,
       userId: DataTypes.UUID

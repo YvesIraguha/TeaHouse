@@ -18,6 +18,7 @@ module.exports = {
         type: Sequelize.ENUM(
           "Short story",
           "Poem",
+          "Essay",
           "Lit news",
           "Gossip",
           "Interview"
